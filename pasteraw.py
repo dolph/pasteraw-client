@@ -17,7 +17,6 @@ import logging
 
 import pkg_resources
 import requests
-import simplejson
 
 
 __version__ = pkg_resources.require('pasteraw')[0].version
@@ -26,15 +25,16 @@ LOG_FORMAT = '%(levelname)s: %(message)s'
 logging.basicConfig(format=LOG_FORMAT)
 LOG = logging.getLogger(__name__)
 
-ENDPOINT = 'http://127.0.0.1:8000'  # TODO: api.pasteraw.com
+ENDPOINT = 'http://pasteraw.com/api/v1'
 
 
 def create_paste(content):
-    r = requests.post('%s/pastes' % ENDPOINT, data=content)
+    r = requests.post(
+        ENDPOINT + '/pastes', data={'content': content}, allow_redirects=False)
 
-    try:
-        return r.json()['url']
-    except simplejson.scanner.JSONDecodeError:
+    if r.status_code == 302:
+        return r.headers['Location']
+    else:
         if r.text:
             LOG.exception(r.text)
         else:
