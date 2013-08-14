@@ -28,9 +28,9 @@ LOG = logging.getLogger(__name__)
 ENDPOINT = 'http://pasteraw.com/api/v1'
 
 
-def create_paste(content):
+def create_paste(endpoint, content):
     r = requests.post(
-        ENDPOINT + '/pastes', data={'content': content}, allow_redirects=False)
+        endpoint + '/pastes', data={'content': content}, allow_redirects=False)
 
     if r.status_code == 302:
         return r.headers['Location']
@@ -51,7 +51,7 @@ def main(args):
 
     LOG.debug('Content-Length:', len(content))
 
-    print create_paste(content)
+    print create_paste(args.endpoint, content)
 
     sys.exit(0)
 
