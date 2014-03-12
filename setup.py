@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name='pasteraw',
-    version='1.0.2',
+    version='1.0.3',
     description='Pipe stdin to a raw pastebin',
     author='Dolph Mathews',
     author_email='dolph.mathews@gmail.com',
