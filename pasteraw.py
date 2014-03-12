@@ -33,6 +33,8 @@ def create_paste(endpoint, content):
 
     if r.status_code == 302:
         return r.headers['Location']
+    if r.status_code == 413:
+        return 'Maximum content length exceeded: %d bytes' % len(content)
     else:
         if r.text:
             LOG.exception(r.text)
@@ -48,9 +50,14 @@ def main(args):
     for line in fileinput.input(args.files):
         content += line
 
-    LOG.debug('Content-Length: %d', len(content))
+    content_length = len(content)
+    LOG.debug('Content-Length: %d', content_length)
+    if content_length > args.max_content_length:
+        raise SystemExit(
+            'Maximum content length (%d bytes) exceeded: %d bytes' % (
+                args.max_content_length, content_length))
 
-    print create_paste(args.endpoint, content)
+    print(create_paste(args.endpoint, content))
 
     raise SystemExit()
 
@@ -64,6 +71,9 @@ def cli():
         help='one or more file names')
     parser.add_argument(
         '--endpoint', default=ENDPOINT,
+        help=argparse.SUPPRESS)
+    parser.add_argument(
+        '--max-content-length', type=int, default=1048576,
         help=argparse.SUPPRESS)
     parser.add_argument(
         '--debug', action='store_true',
