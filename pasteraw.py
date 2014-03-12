@@ -12,7 +12,6 @@
 
 import argparse
 import fileinput
-import sys
 import logging
 
 import pkg_resources
@@ -39,7 +38,7 @@ def create_paste(endpoint, content):
             LOG.exception(r.text)
         else:
             LOG.exception('Unable to read response from pasteraw.')
-        sys.exit(1)
+        raise SystemExit(1)
 
 
 def main(args):
@@ -53,7 +52,7 @@ def main(args):
 
     print create_paste(args.endpoint, content)
 
-    sys.exit(0)
+    raise SystemExit()
 
 
 def cli():
@@ -81,7 +80,7 @@ def cli():
 
     if args.version:
         print pkg_resources.require('pasteraw')[0]
-        sys.exit()
+        raise SystemExit()
 
     main(args)
 
