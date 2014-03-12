@@ -43,13 +43,13 @@ def create_paste(endpoint, content):
 
 
 def main(args):
-    LOG.debug('File-Count:', len(args.files))
+    LOG.debug('File-Count: %d', len(args.files))
 
     content = ''
     for line in fileinput.input(args.files):
         content += line
 
-    LOG.debug('Content-Length:', len(content))
+    LOG.debug('Content-Length: %d', len(content))
 
     print create_paste(args.endpoint, content)
 
