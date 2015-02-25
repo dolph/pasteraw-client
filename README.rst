@@ -22,7 +22,7 @@ Given a file::
 Pipe the file to `pasteraw` and get back a URL to a raw paste of that file::
 
     $ cat somefile | pasteraw
-    http://pasteraw.com/9lvwkwgrgji5gbhjygxgaqcfx3hefpb
+    http://cdn.pasteraw.com/9lvwkwgrgji5gbhjygxgaqcfx3hefpb
 
 Do whatever you want with the URL. For example, open it in your web browser::
 
