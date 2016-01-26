@@ -89,7 +89,7 @@ def cli():
         LOG.setLevel(logging.WARN)
 
     if args.version:
-        print pkg_resources.require('pasteraw')[0]
+        print(pkg_resources.require('pasteraw')[0])
         raise SystemExit()
 
     main(args)
