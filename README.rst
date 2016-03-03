@@ -7,6 +7,9 @@ Pipe `stdin` directly to a raw pastebin. Get a URL back. Go be productive.
 Installation
 ------------
 
+.. image:: https://img.shields.io/pypi/v/pasteraw.svg
+   :target: https://pypi.python.org/pypi/pasteraw
+
 From PyPi::
 
     $ pip install pasteraw
