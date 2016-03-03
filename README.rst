@@ -27,9 +27,10 @@ Pipe the file to `pasteraw` and get back a URL to a raw paste of that file::
     $ cat somefile | pasteraw
     http://cdn.pasteraw.com/9lvwkwgrgji5gbhjygxgaqcfx3hefpb
 
-Do whatever you want with the URL. For example, open it in your web browser::
+Do whatever you want with the URL. Curl it, email it, whatever::
 
-    $ open $(!!)
+    $ curl http://cdn.pasteraw.com/9lvwkwgrgji5gbhjygxgaqcfx3hefpb
+    Lorem ipsum.
 
 Python library usage
 --------------------
