@@ -4,6 +4,10 @@ pasteraw-client
 
 Pipe `stdin` directly to a raw pastebin. Get a URL back. Go be productive.
 
+By default, `pasteraw` uses a hosted pastebin service, `pasteraw.com
+<http://pasteraw.com/>`_. You can also deploy `your own instance
+<https://github.com/dolph/pasteraw>`_ of the service and use it instead.
+
 Installation
 ------------
 
@@ -42,8 +46,10 @@ To use `pasteraw.com <http://pasteraw.com/>`_::
     >>> print(url)
     http://cdn.pasteraw.com/9lvwkwgrgji5gbhjygxgaqcfx3hefpb
 
-If you're using your own deployment of `pasteraw
+Alternatively, if you're using your own deployment of `pasteraw
 <https://github.com/dolph/pasteraw>`_, pass your own API endpoint to the
 client::
 
     >>> c = pasteraw.Client('http://pasteraw.example.com/api/v1')
+
+Usage is otherwise identical to using `pasteraw.com <http://pasteraw.com/>`_.
